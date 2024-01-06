@@ -1,0 +1,151 @@
+body
+{
+  padding: 0;
+  margin: 0;
+  background-image: url(../public/images/background4.png);
+  background-repeat: no-repeat;
+}
+.App {
+  text-align: center;
+  padding: 20px;
+}
+.grid {
+  width: fit-content;
+  border-radius: 30px;
+  margin-top: 10px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  display: grid;
+  grid-template-columns: repeat(9, 51px);
+  grid-gap: 2px;
+  background-color: rgba(240, 160, 128, 0.637);
+}
+.cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.637);
+}
+.cell:first-child {
+  border-top-left-radius: 30px;
+}
+.cell:nth-child(9) {
+  border-top-right-radius: 30px;
+}
+
+.cell:nth-child(73) {
+  border-bottom-left-radius: 30px;
+}
+.cell:last-child {
+  border-bottom-right-radius: 30px;
+}
+.selected-cell {
+  background-color: wheat; 
+}
+.ball {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: black;
+  background-color: red;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.score
+{
+  display: flex;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  border: solid rgb(56, 189, 56);
+  background-color: rgb(141, 228, 141, 0.637);
+  border-radius: 50px ;
+  margin-top: 50px;
+  margin-left: 50%;transform: translate(-50%);
+}
+.restart-button
+{
+  border: solid #ffee00;
+  border-radius: 15px;
+  background-color: rgba(255, 252, 66, 0.63);
+  width: 150px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+.game-over-message
+{
+  color: rgb(209, 224, 252); ;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.game-over
+{
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+  border: solid red;
+  background-color: rgba(255, 0, 0, 0.637);
+  border-radius: 30px;
+  width: 250px;
+  margin-left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+}
+.registrationField
+{
+  display: flex;
+  flex-wrap: wrap ;
+  margin-top: 20px;
+  justify-content: center;
+  width: fit-content;
+  position: relative;
+  border-radius: 30px;
+  left: 50%;
+  width: 300px;
+  height: 70px;
+  transform: translate(-50%);
+  border: solid rgb(31, 0, 145);
+  background-color: #7b63ff96;
+  align-items: center;
+}
+.registrationField>label
+{
+  margin-left: 10px;
+  color:white;
+}
+.registrationField>input
+{
+  background-color: #ffffffb4;
+  border-radius: 10px;
+  border: solid #ffee00;
+  outline: none;
+  height: 30px;
+}
+.regButton
+{
+  width: 90%;
+  border-radius: 30px;
+  border: solid #ffee00;
+  background-color: #ffee0079;
+  color:  rgb(49, 20, 123);
+}
+.record
+{
+  display: flex;
+  flex-direction: column;
+  color: black;
+  width: 200px;
+  border: solid rgb(56, 189, 56);
+  background-color: rgb(141, 228, 141, 0.637);
+  border-radius: 50px ;
+  margin-left: auto ;
+  margin-top: 30px;
+  align-items: center;
+}
+.record>p
+{
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
