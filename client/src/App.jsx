@@ -9,7 +9,8 @@ function App() {
   const [removedBallsCount, setRemovedBallsCount] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [occupiedCount, setOccupiedCount]=useState(3);
-  const [newGamer, setNewGamer]=useState('')
+  const [newGamer, setNewGamer]=useState('User');
+  const [clicked, setClicked]=useState(0);
   const [result, setResult]= useState({
     name:'',
     score: 0
@@ -17,17 +18,12 @@ function App() {
   const colors = [
     'blue', 'green', 'yellow', 'orange', 'purple', 'cyan', 'pink', 'brown'
   ];
-  
+
 
   const setGamer = (e) => 
   {
     const n= e.target.value;
-    if (!n.length)
-    {
-      setNewGamer("User")
-    }
-    else
-    {setNewGamer(n)}
+    setNewGamer(n)
   }
 
   const getInf = async () => {
@@ -257,8 +253,10 @@ function App() {
 
   const saveResult = async () =>
   {
+    setClicked(1);
     try{
       axios.post('http://localhost:5454/post', {
+        
         name: newGamer,
         score: score
       })
@@ -278,7 +276,7 @@ function App() {
         <p className='rec'>{result.name} {result.score}</p>
       </aside>
       <div className='registrationField'>
-        <input type="text" onChange={setGamer}/>
+        <input type="text" placeholder='User' onChange={setGamer}/>
         <label htmlFor='Name' >Введите имя</label>
       </div>
       
@@ -292,7 +290,7 @@ function App() {
             Игра завершена. Ваш счет: {score}
           </div>
           <div>
-          <button className="restart-button" onClick={saveResult}>
+          <button className={`restart-button ${clicked ? 'restart-button-disabled': '' }`} onClick={saveResult}>
               сохранить
             </button>
             <button className="restart-button" onClick={restartGame}>

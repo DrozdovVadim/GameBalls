@@ -2,7 +2,7 @@ body
 {
   padding: 0;
   margin: 0;
-  background-image: url(../public/images/background4.png);
+  background-image: url(../public/images/background4.png); 
   background-repeat: no-repeat;
 }
 .App {
@@ -25,6 +25,11 @@ body
   height: 50px;
   border: 1px solid rgba(255, 255, 255, 0.637);
 }
+.cell-disabled {
+  pointer-events: none;
+  background-color: rgba(153, 120, 108, 0.637);
+}
+
 .cell:first-child {
   border-top-left-radius: 30px;
 }
@@ -73,6 +78,15 @@ body
   width: 150px;
   height: 50px;
   margin-bottom: 5px;
+}
+.restart-button-disabled
+{
+  pointer-events: none;
+  background-color:  rgba(153, 151, 63, 0.63);
+}
+.restart-button:hover
+{
+  background-color: rgba(255, 252, 66, 0.767);
 }
 .game-over-message
 {
