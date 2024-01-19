@@ -8,7 +8,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [removedBallsCount, setRemovedBallsCount] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const [occupiedCount, setOccupiedCount]=useState(3);
+  // const [occupiedCount, setOccupiedCount]=useState(3);
   const [newGamer, setNewGamer]=useState('User');
   const [clicked, setClicked]=useState(0);
   const [result, setResult]= useState({
@@ -30,7 +30,6 @@ function App() {
     try {
       const response = await axios.get('http://localhost:5454/get');
   
-      // Если запрос выполнен успешно, обновляем состояние record
       if (response.status === 200) {
         setResult({
           name: response.data.name,
@@ -49,11 +48,12 @@ function App() {
   useEffect(() => {
     getInf();
     const randomBalls = [];
+    
     while (randomBalls.length < 3) {
       const row = Math.floor(Math.random() * 9);
       const col = Math.floor(Math.random() * 9);
-      const colorIndex = Math.floor(Math.random() * colors.length); // Выбираем случайный индекс из массива цветов
-      const color = colors[colorIndex]; // Получаем цвет по случайному индексу
+      const colorIndex = Math.floor(Math.random() * colors.length); 
+      const color = colors[colorIndex]; 
       randomBalls.push({ row, col, color });
     }
     setBalls(randomBalls);
@@ -114,7 +114,6 @@ function App() {
     const emptyCells = [];
     const allCoordinates = new Set();
   
-    // Создаем список пустых клеток и запоминаем занятые координаты
     for (const ball of updatedBalls) {
       allCoordinates.add(`${ball.row}-${ball.col}`);
     }
@@ -168,7 +167,7 @@ function App() {
 
   const getNeighbors = ({ row, col }) => {
     const neighbors = [];
-    const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]; // Все возможные направления движения
+    const directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]; 
 
     for (const [dx, dy] of directions) {
       const newRow = row + dx;
@@ -183,7 +182,7 @@ function App() {
   };
   const checkAndRemoveBalls = () => {
     const directions = [
-      [1, 0], [0, 1], [1, 1], [1, -1] // Проверяем в 4 направлениях: вправо, вниз, по диагонали вправо-вниз, по диагонали влево-вниз
+      [1, 0], [0, 1], [1, 1], [1, -1]
     ];
   
     let updatedBalls = [...balls];
@@ -226,12 +225,13 @@ function App() {
       setBalls(updatedBalls);
       setRemovedBallsCount(prevCount => prevCount + ballsToRemove.length);
       updateScore(ballsToRemove.length);
+      console.log(ballsToRemove.length);
       ballsToRemove=[];
     }
   };
   
   const updateScore = (removedCount) => {
-    let additionalScore = Math.floor((removedCount-4)/2);
+    let additionalScore = Math.floor((removedCount)/5);
     if (additionalScore < 1) additionalScore = 1;
     setScore(prevScore => prevScore + additionalScore);
   };
